@@ -1,0 +1,214 @@
+/* ==========================================================================
+   SellerPanel.css — Modern E-Commerce Seller Hub / Merchant Portal
+   Indian E-Commerce Theme (₹ INR, GST, Couriers, Real-Time Inventory)
+   ========================================================================== */
+
+/* Root & Theme Variables */
+:root {
+  --seller-primary: #4f46e5;
+  --seller-primary-dark: #3730a3;
+  --seller-primary-light: #eef2ff;
+  --seller-accent: #f59e0b;
+  --seller-accent-light: #fef3c7;
+  --seller-success: #10b981;
+  --seller-success-light: #ecfdf5;
+  --seller-danger: #ef4444;
+  --seller-danger-light: #fef2f2;
+  --seller-warning: #f97316;
+  --seller-bg: #f8fafc;
+  --seller-card-bg: #ffffff;
+  --seller-border: #e2e8f0;
+  --seller-text-main: #0f172a;
+  --seller-text-muted: #64748b;
+  --seller-sidebar-bg: #0f172a;
+}
+
+/* Animations */
+@keyframes sellerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sellerSlideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes sellerPulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(79, 70, 229, 0);
+  }
+}
+
+@keyframes liveDotPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.6;
+  }
+}
+
+.seller-animate-fade {
+  animation: sellerFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.seller-animate-slide {
+  animation: sellerSlideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.seller-live-dot {
+  animation: liveDotPulse 1.8s infinite ease-in-out;
+}
+
+/* Custom Scrollbars */
+.seller-custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.seller-custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+.seller-custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+.seller-custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Glassmorphism Accents */
+.seller-glass-card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.seller-dark-card {
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+  color: #ffffff;
+}
+
+/* Metric Cards Hover */
+.seller-metric-card {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid #e2e8f0;
+}
+.seller-metric-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.08), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
+  border-color: #cbd5e1;
+}
+
+/* Product Row Hover */
+.seller-table-row {
+  transition: background-color 0.15s ease;
+}
+.seller-table-row:hover {
+  background-color: #f8fafc;
+}
+
+/* Status Badges */
+.badge-active {
+  background-color: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.badge-low-stock {
+  background-color: #fffbeb;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+.badge-out-of-stock {
+  background-color: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.badge-shipped {
+  background-color: #eff6ff;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+}
+
+.badge-delivered {
+  background-color: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.badge-pending {
+  background-color: #fff7ed;
+  color: #9a3412;
+  border: 1px solid #fed7aa;
+}
+
+/* Bar Chart Stems */
+.seller-chart-bar {
+  transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+}
+.seller-chart-bar:hover {
+  filter: brightness(1.15);
+}
+
+/* Toast Notification */
+.seller-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #0f172a;
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #334155;
+  animation: sellerFadeIn 0.3s ease forwards;
+}
+
+/* Printable Invoice Modal */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-invoice, #printable-invoice * {
+    visibility: visible;
+  }
+  #printable-invoice {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
